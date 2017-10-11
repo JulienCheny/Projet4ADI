@@ -1,5 +1,7 @@
 package view.panel;
 
-public class E_End {
+import javax.swing.JPanel;
+
+public class E_End extends JPanel {
 
 }

@@ -1,5 +1,7 @@
 package view.panel;
 
-public class C_ChooseDestination {
+import javax.swing.JPanel;
+
+public class C_ChooseDestination extends JPanel {
 
 }

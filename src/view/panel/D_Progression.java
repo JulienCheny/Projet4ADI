@@ -1,5 +1,7 @@
 package view.panel;
 
-public class D_Progression {
+import javax.swing.JPanel;
+
+public class D_Progression extends JPanel {
 
 }

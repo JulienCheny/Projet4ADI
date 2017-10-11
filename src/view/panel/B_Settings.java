@@ -1,5 +1,7 @@
 package view.panel;
 
-public class B_Settings {
+import javax.swing.JPanel;
+
+public class B_Settings extends JPanel {
 
 }
