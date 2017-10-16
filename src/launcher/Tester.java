@@ -10,6 +10,7 @@ import java.util.List;
 import model.Instance;
 import model.InstanceList;
 import model.Matrix;
+import view.MainWindow;
 import model.IOCsv;
 import model.IOGraph;
 
@@ -45,6 +46,8 @@ public class Tester {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		//new MainWindow();
 		
 		//output csv (un avec classe + noeud l'autre cf IOGraph)
 		//paralleliser
