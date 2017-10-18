@@ -44,7 +44,7 @@ public class IOCsv {
 			for(String attribut : attributsList) {
 				line += attribut + ";";
 			}
-			System.out.println(line);
+			//System.out.println(line);
 			outFile.println(line);
 		}
 		outFile.close();

@@ -1,12 +1,8 @@
 package model;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class InstanceList {
 	private ArrayList<Instance> iList = new ArrayList<Instance>();
@@ -38,23 +34,65 @@ public class InstanceList {
 		iList.remove(index);
 	}
 	
-	public Matrix calculateAllEuclideanDistances() {
+	public double euclideanDistance(int indexInstance1, int indexInstance2)
+	{
+		double result = 0;
+		int i;
+		Instance instance1 = iList.get(indexInstance1);
+		Instance instance2 = iList.get(indexInstance2);
+		for(i=0; i<instance1.getAttributCount(); i++)
+		{
+			result+=Math.pow(instance1.getValueAt(i)-instance2.getValueAt(i),2);
+		}
+		double sqrtResult = Math.sqrt(result);
+		
+		return sqrtResult;
+	}
+	
+	public Matrix calculateAllEuclideanDistancesUniCore() {
 		int i, j, n = iList.size();
 		Matrix matrix = new Matrix(n);
+		Double[][] mList = matrix.getAll();
 		for(i=0;i<n;i++)
 		{
 			for(j=i+1;j<n;j++)
 			{
-				Double r = InstanceOperations.euclideanDistance(iList.get(i), iList.get(j));
-				matrix.set(i, j, r);
-				matrix.set(j, i, r);
+				Double r = euclideanDistance(i,j);
+				/*matrix.set(i, j, r);
+				matrix.set(j, i, r);*/
+				mList[i][j] = r;
+				mList[j][i] = r;
 			}
 		}
+		matrix.setAll(mList);
+		return matrix;
+	}
+	
+	public Matrix calculateAllEuclideanDistances() {
+		int n = iList.size();
+		Matrix matrix = new Matrix(n);
+		Double[][] mList = matrix.getAll();
+		IntStream.range(0, n).parallel().forEach(i->{
+			int j;
+			for(j=i+1;j<n;j++)
+			{
+				Double r = euclideanDistance(i,j);
+				/*matrix.set(i, j, r);
+				matrix.set(j, i, r);*/
+				mList[i][j] = r;
+				mList[j][i] = r;
+			}
+		});
+		matrix.setAll(mList);
 		return matrix;
 	}
 	
 	public ArrayList<List<Double>> calculateArcs() {
+		Chrono ch = new Chrono();
+		ch.start();
 		Matrix matrix = calculateAllEuclideanDistances();
+		ch.stop();
+		System.out.println(ch.getTime());
 		return calculateArcs(matrix);
 	}
 	
@@ -101,7 +139,6 @@ public class InstanceList {
 	public String toString()
 	{
 		String str = "";
-		int i;
 		for(Instance inst : iList) {
 			str += inst + "\n";
 		}
