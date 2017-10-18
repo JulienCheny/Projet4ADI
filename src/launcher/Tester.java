@@ -25,11 +25,11 @@ public class Tester {
 		Double[] array3 = {6.0, 2.8 , 9.7};
 		
 		Instance i1 = new Instance(array);
-		InstanceList iList= new InstanceList(3);
+		//InstanceList iList= new InstanceList(3);
 		
-		iList.addInstance(i1);
-		iList.addInstance(new Instance(array2));
-		iList.addInstance(new Instance(array3));
+		//iList.addInstance(i1);
+		//iList.addInstance(new Instance(array2));
+		//iList.addInstance(new Instance(array3));
 		
 		InstanceList i2 = null;
 		try 

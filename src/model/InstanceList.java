@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class InstanceList {
-	private ArrayList<Instance> iList = new ArrayList<Instance>();
+	private Instance [] iList;
 	private int attributCount;
-	
-	public InstanceList(ArrayList<List<String>> instances)
+	private int size = 0;
+	/*public InstanceList(ArrayList<List<String>> instances)
 	{
 		attributCount = instances.get(0).size();
 		for(List<String> inst : instances)
@@ -20,7 +20,25 @@ public class InstanceList {
 			Instance instance = new Instance(values);
 			iList.add(instance);
 		}
+	}*/
+	
+	public InstanceList(ArrayList<List<String>> instances)
+	{
+		attributCount = instances.get(0).size();
+		ArrayList<Instance> iArrayList = new ArrayList<Instance>();
+		for(List<String> inst : instances)
+		{
+			ArrayList<Double> values = new ArrayList<Double>();
+			for (String str : inst) {
+				values.add(Double.parseDouble(str));
+			}
+			Instance instance = new Instance(values);
+			iArrayList.add(instance);
+		}
+		size = iArrayList.size();
+		iList = iArrayList.toArray(new Instance[iArrayList.size()]);
 	}
+	
 	public InstanceList(int attributCount) {
 		this.attributCount = attributCount;
 	}
@@ -28,18 +46,24 @@ public class InstanceList {
 	public void addInstance(Instance instance) {
 		if(instance.getAttributCount() != attributCount)
 			throw new NullPointerException();
-		iList.add(instance);
+		//iList.add(instance);
+		size ++;
+		java.util.Arrays.copyOf(iList, size);
+		iList[size-1] = instance;
 	}
+	
 	public void removeInstanceOn(int index) {
-		iList.remove(index);
+		//iList.remove(index);
+		size --;
+		java.util.Arrays.copyOf(iList, size);
 	}
 	
 	public double euclideanDistance(int indexInstance1, int indexInstance2)
 	{
 		double result = 0;
 		int i;
-		Instance instance1 = iList.get(indexInstance1);
-		Instance instance2 = iList.get(indexInstance2);
+		Instance instance1 = iList[indexInstance1];
+		Instance instance2 = iList[indexInstance2];
 		for(i=0; i<instance1.getAttributCount(); i++)
 		{
 			result+=Math.pow(instance1.getValueAt(i)-instance2.getValueAt(i),2);
@@ -50,40 +74,32 @@ public class InstanceList {
 	}
 	
 	public Matrix calculateAllEuclideanDistancesUniCore() {
-		int i, j, n = iList.size();
+		int i, j, n = size;
 		Matrix matrix = new Matrix(n);
-		Double[][] mList = matrix.getAll();
 		for(i=0;i<n;i++)
 		{
 			for(j=i+1;j<n;j++)
 			{
 				Double r = euclideanDistance(i,j);
-				/*matrix.set(i, j, r);
-				matrix.set(j, i, r);*/
-				mList[i][j] = r;
-				mList[j][i] = r;
+				matrix.set(i, j, r);
+				matrix.set(j, i, r);
 			}
 		}
-		matrix.setAll(mList);
 		return matrix;
 	}
 	
 	public Matrix calculateAllEuclideanDistances() {
-		int n = iList.size();
+		int n = size;
 		Matrix matrix = new Matrix(n);
-		Double[][] mList = matrix.getAll();
 		IntStream.range(0, n).parallel().forEach(i->{
 			int j;
 			for(j=i+1;j<n;j++)
 			{
 				Double r = euclideanDistance(i,j);
-				/*matrix.set(i, j, r);
-				matrix.set(j, i, r);*/
-				mList[i][j] = r;
-				mList[j][i] = r;
+				matrix.set(i, j, r);
+				matrix.set(j, i, r);
 			}
 		});
-		matrix.setAll(mList);
 		return matrix;
 	}
 	
@@ -100,7 +116,7 @@ public class InstanceList {
 	{
 		ArrayList<List<Double>> table = new ArrayList<List<Double>>();
 		int i,j,k;
-		int n=iList.size();
+		int n=size;
 		boolean canConnect;
 		double r;
 		
