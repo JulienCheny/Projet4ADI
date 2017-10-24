@@ -37,15 +37,14 @@ public class Tester {
 			i2= new InstanceList (IOCsv.importCsv(new File("src/poker-hand-testing.data.txt"))); //interface pour afficher le graphe , temps de progression, temps de calcul
 		} catch (IOException e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//ch.start();
+		ch.start();
 		ArrayList<List<Double>> arcsList = i2.calculateArcs();
-		//ch.stop();
-		//System.out.println(ch.getTime());
+		ch.stop();
+		System.out.println("Durée total calcul distance et arcs : " + ch.getTime());
 		try {
-			IOGraph.exportGraphCsv("src/arcsList.csv", "src/nodesList.csv", arcsList);
+			IOGraph.exportGraphCsv("src/arcsList.csv", "src/nodesList.csv", arcsList, i2.getClasses());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -1,19 +1,23 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class Matrix {
 	
 	//ArrayList<ArrayList<Double>> matrix;
-	Double [] [] matrix;
+	Object [] [] matrix;
 	int size =  0;
 	
-	public Matrix(int nbNodes)
+	public Matrix(int m,int n)
 	{
-		size = nbNodes;
-		int i;
-		matrix = new Double[nbNodes][nbNodes];
+		size = m;
+		matrix = new Object[m][n];
+		
+	}
+	
+	public Matrix(int n)
+	{
+		size = n;
+		matrix = new Object[n][n];
 		/*matrix= new ArrayList<ArrayList<Double>>();
 		for(i=0;i<nbNodes;i++)
 		{
@@ -25,7 +29,7 @@ public class Matrix {
 	
 	
 	
-	public Double get(int row, int col) 
+	public Object get(int row, int col) 
 	{
 		return matrix[row][col];
 		//return matrix.get(row).get(col);
@@ -33,13 +37,13 @@ public class Matrix {
 
 
 
-	public void set(int row, int col, Double value) 
+	public void set(int row, int col, Object obj) 
 	{
-		matrix[row][col] = value;
+		matrix[row][col] = obj;
 		//matrix.get(row).set(col, value);
 	}
 
-	public Double[][] getAll() 
+	public Object[][] getAll() 
 	{
 		return matrix;
 		//return matrix.get(row).get(col);
@@ -47,7 +51,7 @@ public class Matrix {
 
 
 
-	public void setAll(Double [][]matrix) 
+	public void setAll(Object [][]matrix) 
 	{
 		this.matrix = matrix;
 		//matrix.get(row).set(col, value);

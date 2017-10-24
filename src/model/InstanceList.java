@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -8,6 +9,7 @@ public class InstanceList {
 	private Instance [] iList;
 	private int attributCount;
 	private int size = 0;
+	private ArrayList<String> classesList;
 	/*public InstanceList(ArrayList<List<String>> instances)
 	{
 		attributCount = instances.get(0).size();
@@ -24,13 +26,16 @@ public class InstanceList {
 	
 	public InstanceList(ArrayList<List<String>> instances)
 	{
+		int i;
 		attributCount = instances.get(0).size();
 		ArrayList<Instance> iArrayList = new ArrayList<Instance>();
+		classesList = new ArrayList<String>();
 		for(List<String> inst : instances)
 		{
 			ArrayList<Double> values = new ArrayList<Double>();
-			for (String str : inst) {
-				values.add(Double.parseDouble(str));
+			classesList.add(inst.get(0));
+			for (i = 1; i < inst.size(); i++) {
+				values.add(Double.parseDouble(inst.get(i)));
 			}
 			Instance instance = new Instance(values);
 			iArrayList.add(instance);
@@ -73,7 +78,7 @@ public class InstanceList {
 		return sqrtResult;
 	}
 	
-	public Matrix calculateAllEuclideanDistancesUniCore() {
+	public Matrix calculateAllEuclideanDistancesUnicore() {
 		int i, j, n = size;
 		Matrix matrix = new Matrix(n);
 		for(i=0;i<n;i++)
@@ -93,6 +98,7 @@ public class InstanceList {
 		Matrix matrix = new Matrix(n);
 		IntStream.range(0, n).parallel().forEach(i->{
 			int j;
+			
 			for(j=i+1;j<n;j++)
 			{
 				Double r = euclideanDistance(i,j);
@@ -106,13 +112,13 @@ public class InstanceList {
 	public ArrayList<List<Double>> calculateArcs() {
 		Chrono ch = new Chrono();
 		ch.start();
-		Matrix matrix = calculateAllEuclideanDistances();
+		Matrix matrix = calculateAllEuclideanDistancesUnicore();
 		ch.stop();
-		System.out.println(ch.getTime());
-		return calculateArcs(matrix);
+		System.out.println("Durée calcul distances : " + ch.getTime());
+		return calculateArcsUnicore(matrix);
 	}
 	
-	public ArrayList<List<Double>> calculateArcs(Matrix matrix)
+	public ArrayList<List<Double>> calculateArcsUnicore(Matrix matrix)
 	{
 		ArrayList<List<Double>> table = new ArrayList<List<Double>>();
 		int i,j,k;
@@ -126,12 +132,12 @@ public class InstanceList {
 			{
 				//System.out.println("i = " + i + "\nj = " + j);
 				canConnect = true;
-				r=matrix.get(i, j);
+				r=(double) matrix.get(i, j);
 				for(k=0;k<n;k++)
 				{
 					if(k!=i && k!=j)
 					{
-						if(matrix.get(i, k)<=r && matrix.get(j, k)<=r )
+						if((double) matrix.get(i, k)<=r && (double)matrix.get(j, k)<=r )
 						{
 							canConnect = false;
 							break;
@@ -150,7 +156,55 @@ public class InstanceList {
 		return table;
 	}
 	
+	private <T> List<T> twoDArrayToList(T[][] twoDArray) {
+	    List<T> list = new ArrayList<T>();
+	    for (T[] array : twoDArray) {
+	        list.addAll(Arrays.asList(array));
+	    }
+	    return list;
+	}
 	
+	public ArrayList<List<Double>> calculateArcs(Matrix matrix)
+	{
+		ArrayList<List<Double>> table = new ArrayList<List<Double>>();
+		int n=size;
+		IntStream.range(0, n).parallel().forEach(i->{
+			ArrayList<List<Double>> localTable = new ArrayList<List<Double>>();
+			int j,k;
+			for(j=i+1;j<n;j++)
+			{
+				boolean canConnect;
+				double r;
+				//System.out.println("i = " + i + "\nj = " + j);
+				canConnect = true;
+				r=(double) matrix.get(i, j);
+				for(k=0;k<n;k++)
+				{
+					if(k!=i && k!=j)
+					{
+						if((double)matrix.get(i, k)<=r && (double)matrix.get(j, k)<=r )
+						{
+							canConnect = false;
+							break;
+						}
+					}
+				}
+				if(canConnect) {
+					ArrayList<Double> connection = new ArrayList<Double>();
+					connection.add((double) i);
+					connection.add((double) j);
+					connection.add(r);
+					localTable.add(connection);
+				}
+			}
+			table.addAll(localTable);
+		});
+		return table;
+	}
+	
+	public ArrayList<String> getClasses() {
+		return classesList;
+	}
 	
 	public String toString()
 	{
