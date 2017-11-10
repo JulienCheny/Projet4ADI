@@ -29,7 +29,7 @@ public class Tester {
 		InstanceList i2 = null;
 		try 
 		{
-			i2= new InstanceList (IOCsv.importCsv(new File("src/wine.data.txt"))); //interface pour afficher le graphe , temps de progression, temps de calcul
+			i2= new InstanceList (IOCsv.importCsv(new File("src/iris.data.txt"))); //interface pour afficher le graphe , temps de progression, temps de calcul
 		} catch (IOException e) 
 		{
 			e.printStackTrace();
