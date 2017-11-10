@@ -3,17 +3,12 @@ package launcher;
 import java.io.File;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import model.Instance;
 import model.InstanceList;
-import model.Matrix;
-import view.MainWindow;
+import model.universals.IOCsv;
 import model.Chrono;
-import model.IOCsv;
-import model.IOGraph;
+import model.Graph;
 
 public class Tester {
 	public static void main(String[] args) {
@@ -34,17 +29,18 @@ public class Tester {
 		InstanceList i2 = null;
 		try 
 		{
-			i2= new InstanceList (IOCsv.importCsv(new File("src/poker-hand-testing.data.txt"))); //interface pour afficher le graphe , temps de progression, temps de calcul
+			i2= new InstanceList (IOCsv.importCsv(new File("src/wine.data.txt"))); //interface pour afficher le graphe , temps de progression, temps de calcul
 		} catch (IOException e) 
 		{
 			e.printStackTrace();
 		}
 		ch.start();
-		ArrayList<List<Double>> arcsList = i2.calculateArcs();
+		Graph graph = new Graph();
+		graph.createGraphMonocore(i2);
 		ch.stop();
 		System.out.println("Durée total calcul distance et arcs : " + ch.getTime());
 		try {
-			IOGraph.exportGraphCsv("src/arcsList.csv", "src/nodesList.csv", arcsList, i2.getClasses());
+			graph.exportToCsv("src/arcsList.csv", "src/nodesList.csv");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

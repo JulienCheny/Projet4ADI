@@ -1,4 +1,4 @@
-package model;
+package model.universals;
 
 import java.io.File;
 import java.io.IOException;
