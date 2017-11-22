@@ -11,6 +11,12 @@ import java.util.Scanner;
 public class IOCsv {
 	
 	
+	/**
+	 * Method importCsv : 
+	 * @param file
+	 * @return the 2D list imported from a Csv File
+	 * @throws IOException
+	 */
 	public static ArrayList<List<String>> importCsv(File file) throws IOException
 	{
 		
@@ -28,6 +34,12 @@ public class IOCsv {
 	    return list;
 	}
 	
+	/**
+	 * Method exportCsv : Export a 2D List into a Csv file
+	 * @param fileName
+	 * @param list
+	 * @throws IOException
+	 */
 	public static void exportCsv(String fileName,ArrayList<List<String>> list ) throws IOException
 	{
 		int i;

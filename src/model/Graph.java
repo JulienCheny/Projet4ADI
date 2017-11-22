@@ -4,19 +4,33 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.stream.IntStream;
 
 import model.universals.IOCsv;
 
+/**
+ * @author Francois and Julien
+ *
+ */
 public class Graph {
 	private ArrayList<List<Double>> arcsList;
 	private ArrayList<String> classesList;
 	
+	/**
+	 * Default 's Constructor : initialize Graph with nothing
+	 */
 	public Graph() {
 		arcsList = new ArrayList<List<Double>>();
 	}
 	
-	public void createGraphMulticore(InstanceList instanceList) {
+	/**
+	 * Method createGraphMulticore : Create the graph with parallelism
+	 * @param instanceList
+	 * @throws InterruptedException
+	 * @throws ExecutionException
+	 */
+	public void createGraphMulticore(InstanceList instanceList) throws InterruptedException, ExecutionException {
 		arcsList.clear();
 		classesList = instanceList.getClasses();
 		int n = instanceList.size();
@@ -57,6 +71,10 @@ public class Graph {
 		});
 	}
 	
+	/**
+	 * Method createGraphMonocore : Create the graph without parallelism
+	 * @param instanceList
+	 */
 	public void createGraphMonocore(InstanceList instanceList) {
 		arcsList.clear();
 		classesList = instanceList.getClasses();
@@ -97,6 +115,12 @@ public class Graph {
 		}
 	}
 	
+	/**
+	 * Method exportToCsv : Export the Grpah into Csv file
+	 * @param arcsFileName
+	 * @param nodesFileName
+	 * @throws IOException
+	 */
 	public void exportToCsv(String arcsFileName, String nodesFileName) throws IOException
 	{
 		String[] arcsNameArray = {"RNGSource", "RNGTarget", "RNGDistance"};
