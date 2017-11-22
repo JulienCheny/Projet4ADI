@@ -1,5 +1,8 @@
 package model;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -130,15 +133,18 @@ public class InstanceList implements Callable<Double> {
 	 */
 	public double euclideanDistance(int indexInstance1, int indexInstance2)
 	{
-		double result = 0;
+		double result = 0d;
 		int i;
 		Instance instance1 = iList[indexInstance1];
 		Instance instance2 = iList[indexInstance2];
+		if(indexInstance1 == 2 && indexInstance2 ==12)
+			System.out.println("break");
 		for(i=0; i<instance1.getAttributCount(); i++)
 		{
-			result+=Math.pow(instance1.getValueAt(i)-instance2.getValueAt(i),2);
+			result+=Math.pow(instance1.getValueAt(i) - instance2.getValueAt(i),2);
 		}
 		double sqrtResult = Math.sqrt(result);
+		//double sqrtResult = round(Math.sqrt(result),16);
 		return sqrtResult;
 	}
 	
@@ -166,6 +172,21 @@ public class InstanceList implements Callable<Double> {
 	public void setClassesList(ArrayList<String> classesList) {
 		this.classesList = classesList;
 	}
+	
+	/**
+	 * Method round
+	 * @param value
+	 * @param places
+	 * @return the double value rounded
+	 */
+	public double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    BigDecimal bd = new BigDecimal(value);
+	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    return bd.doubleValue();
+	}
+	
 	public String toString()
 	{
 		String str = "";

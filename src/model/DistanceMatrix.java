@@ -16,9 +16,8 @@ import java.util.stream.IntStream;
 
 public class DistanceMatrix {
 	private int size = 0;
-	private Double [] [] matrix;
-	/*private static int i;
-	private static int j ;*/
+
+	private double [] [] matrix;
 	
 	/**
 	 * Method createDistanceMatrixMonocore : create the matrix of Distance without parralelism
@@ -27,12 +26,12 @@ public class DistanceMatrix {
 	public void createDistanceMatrixMonocore(InstanceList instanceList) {
 		int i, j, n = instanceList.size();
 		size = n;
-		matrix = new Double[n][n];
+		matrix = new double[n][n];
 		for(i=0;i<n;i++)
 		{
 			for(j=i+1;j<n;j++)
 			{
-				Double r = instanceList.euclideanDistance(i,j);
+				double r = instanceList.euclideanDistance(i,j);
 				set(i, j, r);
 				set(j, i, r);
 			}
@@ -50,7 +49,7 @@ public class DistanceMatrix {
 	public void createDistanceMatrixMulticore(InstanceList instanceList) throws InterruptedException, ExecutionException {
 		int n = instanceList.size();
 		size = n;
-		matrix = new Double[n][n];
+		matrix = new double[n][n];
 		
 		/*List<Callable<Double>> tasks=new ArrayList<>();
 		List<Future<Double>>results=new ArrayList<>();
@@ -78,12 +77,11 @@ public class DistanceMatrix {
 		    }
 	    }
 		executor.shutdown();*/
-	    
 		IntStream.range(0, n).parallel().forEach(i->{
 			int j;
 			for(j=i+1;j<n;j++)
 			{
-				Double r = instanceList.euclideanDistance(i,j);
+				double r = instanceList.euclideanDistance(i,j);
 				set(i, j, r);
 				set(j, i, r);
 			}
@@ -105,7 +103,7 @@ public class DistanceMatrix {
 	 * @param col
 	 * @return the value on Matrix's case
 	 */
-	public Double get(int row, int col) {
+	public double get(int row, int col) {
 		return matrix[row] [col];
 	}
 	
