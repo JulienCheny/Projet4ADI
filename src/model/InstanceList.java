@@ -11,21 +11,8 @@ public class InstanceList {
 	private int attributCount;
 	private int size = 0;
 	private ArrayList<String> classesList;
-	/*public InstanceList(ArrayList<List<String>> instances)
-	{
-		attributCount = instances.get(0).size();
-		for(List<String> inst : instances)
-		{
-			ArrayList<Double> values = new ArrayList<Double>();
-			for (String str : inst) {
-				values.add(Double.parseDouble(str));
-			}
-			Instance instance = new Instance(values);
-			iList.add(instance);
-		}
-	}*/
 	
-	public InstanceList(ArrayList<List<String>> instances)
+	public InstanceList(ArrayList<List<String>> instances, int classIndex)
 	{
 		int i;
 		attributCount = instances.get(0).size();
@@ -34,9 +21,11 @@ public class InstanceList {
 		for(List<String> inst : instances)
 		{
 			ArrayList<Double> values = new ArrayList<Double>();
-			classesList.add(inst.get(0));
-			for (i = 1; i < inst.size(); i++) {
-				values.add(Double.parseDouble(inst.get(i)));
+			for (i = 0; i < inst.size(); i++) {
+				if(i == classIndex)
+					classesList.add(inst.get(i));
+				else
+					values.add(Double.parseDouble(inst.get(i)));
 			}
 			Instance instance = new Instance(values);
 			iArrayList.add(instance);
@@ -45,7 +34,7 @@ public class InstanceList {
 		iList = iArrayList.toArray(new Instance[iArrayList.size()]);
 	}
 	
-	public InstanceList(int attributCount) {
+	/*public InstanceList(int attributCount) {
 		this.attributCount = attributCount;
 	}
 	
@@ -62,7 +51,7 @@ public class InstanceList {
 		//iList.remove(index);
 		size --;
 		java.util.Arrays.copyOf(iList, size);
-	}
+	}*/
 	
 	public double euclideanDistance(int indexInstance1, int indexInstance2)
 	{
@@ -70,13 +59,12 @@ public class InstanceList {
 		int i;
 		Instance instance1 = iList[indexInstance1];
 		Instance instance2 = iList[indexInstance2];
-		if(indexInstance1 == 2 && indexInstance2 ==12)
-			System.out.println("break");
 		for(i=0; i<instance1.getAttributCount(); i++)
 		{
 			result+=Math.pow(instance1.getValueAt(i) - instance2.getValueAt(i),2);
 		}
-		double sqrtResult = round(Math.sqrt(result),16);
+		//double sqrtResult = round(Math.sqrt(result),16);
+		double sqrtResult = Math.sqrt(result);
 		return sqrtResult;
 	}
 	

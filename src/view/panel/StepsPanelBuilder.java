@@ -26,4 +26,9 @@ public class StepsPanelBuilder extends JPanel implements StepsPanelInterface {
 	public void setPanel() {
 		this.setVisible(true);
 	}
+
+	@Override
+	public boolean isValidated() {
+		return false;
+	}
 }

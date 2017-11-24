@@ -24,7 +24,7 @@ public class MainWindow extends JFrame {
 	public List<StepsPanelBuilder> list =  new ArrayList<StepsPanelBuilder>() ;
 	public ListIterator<StepsPanelBuilder> steps;
 	public NavigationBar navBar;
-	public StepsPanelBuilder currentPanel; 
+	public StepsPanelBuilder currentPanel;
 	
 	public A_ChooseSource chooseSource;
 	public B_Settings settings;

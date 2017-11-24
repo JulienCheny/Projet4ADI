@@ -31,14 +31,13 @@ public class Graph {
 			{
 				boolean canConnect;
 				double r;
-				//System.out.println("i = " + i + "\nj = " + j);
 				canConnect = true;
 				r= distances.get(i, j);
 				for(k=0;k<n;k++)
 				{
 					if(k!=i && k!=j)
 					{
-						if(distances.get(i, k)<=r && distances.get(j, k)<=r )
+						if(distances.get(i, k)<r && distances.get(j, k)<r )
 						{
 							canConnect = false;
 							break;
@@ -71,7 +70,6 @@ public class Graph {
 		{
 			for(j=i+1;j<n;j++)
 			{
-				//System.out.println("i = " + i + "\nj = " + j);
 				canConnect = true;
 				r = distances.get(i, j);
 				for(k=0;k<n;k++)
@@ -80,25 +78,11 @@ public class Graph {
 					{
 						if(distances.get(i, k)<r && distances.get(j, k)<r )
 						{
-							if(i == 2 && j == 12) {
-								System.out.println(i + " -> "+ j + " = " + k);
-								System.out.println(r + " > i:" + distances.get(i, k));
-								System.out.println(r + " > j:" + distances.get(j, k));
-								if(distances.get(i, k) == 0)
-									System.out.println("k -> i wtf = "+ j + " to " + k);
-								if(distances.get(j, k) == 0)
-									System.out.println("k - > j wtf = "+ j + " to " + k);
-							}
-							/*
-							if(distances.get(i, k)==r || distances.get(j, k)==r)
-								System.out.println("equidistance i= " + i+ " j= " + j + " k= " + k);*/
 							canConnect = false;
 							break;
 						}
 					}
 				}
-				/*if(i == 13 || j == 13)
-					System.out.println("dist = " + minDist);*/
 				if(canConnect) {
 					ArrayList<Double> connection = new ArrayList<Double>();
 					connection.add((double) i);
