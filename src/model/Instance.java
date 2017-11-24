@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author François and Julien
+ * @author Francois and Julien
  *
  *
  */

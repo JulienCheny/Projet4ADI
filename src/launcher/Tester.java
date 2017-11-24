@@ -3,6 +3,7 @@ package launcher;
 import java.io.File;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import model.Instance;
 import model.InstanceList;
@@ -37,7 +38,16 @@ public class Tester {
 		}
 		ch.start();
 		Graph graph = new Graph();
-		graph.createGraphMonocore(i2);
+		//graph.createGraphMonocore(i2);
+		try {
+			graph.createGraphMulticore(i2);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ExecutionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		ch.stop();
 		System.out.println("Durée total calcul distance et arcs : " + ch.getTime());
 		try {
