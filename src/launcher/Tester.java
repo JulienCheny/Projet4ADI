@@ -28,14 +28,7 @@ public class Tester {
 		iList.addInstance(new Instance(array2));
 		iList.addInstance(new Instance(array3))*/
 		
-		InstanceList i2 = null;
-		try 
-		{
-			i2= new InstanceList (IOCsv.importCsv(new File("src/iris.data.txt")), 0); //interface pour afficher le graphe , temps de progression, temps de calcul
-		} catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
+		InstanceList i2= new InstanceList (IOCsv.importCsv(new File("src/iris.data.txt")), 0); //interface pour afficher le graphe , temps de progression, temps de calcul
 		ch.start();
 		Graph graph = new Graph();
 		//graph.createGraphMonocore(i2);
@@ -50,13 +43,9 @@ public class Tester {
 		}
 		ch.stop();
 		System.out.println("Durée total calcul distance et arcs : " + ch.getTime());
-		try {
-			graph.exportToCsv("src/arcsList.csv", "src/nodesList.csv");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		graph.exportToCsv("src/arcsList.csv", "src/nodesList.csv");
 		
-		new MainWindow();
+		//new MainWindow();
 		
 		//output csv (un avec classe + noeud l'autre cf IOGraph)
 		//paralleliser

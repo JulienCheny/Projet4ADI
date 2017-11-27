@@ -118,7 +118,7 @@ public class Graph {
 	 * @param nodesFileName
 	 * @throws IOException
 	 */
-	public void exportToCsv(String arcsFileName, String nodesFileName) throws IOException
+	public void exportToCsv(String arcsFileName, String nodesFileName)
 	{
 		String[] arcsNameArray = {"RNGSource", "RNGTarget", "RNGDistance"};
 		ArrayList<String> nameList = new ArrayList<String>(Arrays.asList(arcsNameArray));
@@ -128,7 +128,12 @@ public class Graph {
 		for(i = 0; i < size; i++) {
 			List <Double> arc = arcsList.get(i);
 			ArrayList<String> arcStrList = new ArrayList<>();
-			arcStrList.add(Integer.toString(arc.get(0).intValue()));
+			try{
+				arcStrList.add(Integer.toString(arc.get(0).intValue()));
+			}
+			catch (Exception e) {
+				System.out.println("Error on iteration " + i);
+			}
 			arcStrList.add(Integer.toString(arc.get(1).intValue()));
 			arcStrList.add(String.format("%.8g",arc.get(2)));
 			list.add(arcStrList);

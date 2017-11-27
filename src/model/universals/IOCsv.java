@@ -1,6 +1,7 @@
 package model.universals;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,11 +18,16 @@ public class IOCsv {
 	 * @return the 2D list imported from a Csv File
 	 * @throws IOException
 	 */
-	public static ArrayList<List<String>> importCsv(File file) throws IOException
+	public static ArrayList<List<String>> importCsv(File file)
 	{
 		
 		ArrayList<List<String>> list=new ArrayList<List<String>>();
-	    Scanner scanner = new Scanner(file);
+	    Scanner scanner = null;
+		try {
+			scanner = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	    
 	    
 	    while(scanner.hasNext()){
@@ -40,10 +46,15 @@ public class IOCsv {
 	 * @param list
 	 * @throws IOException
 	 */
-	public static void exportCsv(String fileName,ArrayList<List<String>> list ) throws IOException
+	public static void exportCsv(String fileName,ArrayList<List<String>> list )
 	{
 		int i;
-		PrintWriter outFile = new PrintWriter(fileName);
+		PrintWriter outFile = null;
+		try {
+			outFile = new PrintWriter(fileName);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		for(List<String> attributsList : list) {
 			String line = "";
 			for(String attribut : attributsList) {
