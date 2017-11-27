@@ -15,7 +15,10 @@ import model.universals.IOCsv;
  */
 public class Graph {
 	private ArrayList<List<Double>> arcsList;
+	private boolean [][] arcsMatrix;
+	private DistanceMatrix distances;
 	private ArrayList<String> classesList;
+	private InstanceList instanceList;
 	
 	/**
 	 * Default 's Constructor : initialize Graph with nothing
@@ -32,11 +35,14 @@ public class Graph {
 	 */
 	public void createGraphMulticore(InstanceList instanceList) throws InterruptedException, ExecutionException {
 		arcsList.clear();
+		this.instanceList = instanceList;
 		classesList = instanceList.getClasses();
 		int n = instanceList.size();
 		
-		DistanceMatrix distances = new DistanceMatrix();
+		distances = new DistanceMatrix();
 		distances.createDistanceMatrixMulticore(instanceList);
+		
+		arcsMatrix = new boolean[n][n];
 		
 		IntStream.range(0, n).parallel().forEach(i->{
 			ArrayList<List<Double>> localTable = new ArrayList<List<Double>>();
@@ -64,6 +70,8 @@ public class Graph {
 					connection.add((double) j);
 					connection.add(r);
 					localTable.add(connection);
+					arcsMatrix[i][j] = true;
+					arcsMatrix[j][i] = true;
 				}
 			}
 			arcsList.addAll(localTable);
@@ -76,11 +84,15 @@ public class Graph {
 	 */
 	public void createGraphMonocore(InstanceList instanceList) {
 		arcsList.clear();
+		this.instanceList = instanceList;
 		classesList = instanceList.getClasses();
 		int i,j,k,n = instanceList.size();
 		
-		DistanceMatrix distances = new DistanceMatrix();
+		distances = new DistanceMatrix();
 		distances.createDistanceMatrixMonocore(instanceList);
+		
+		arcsMatrix = new boolean[n][n];
+		
 		boolean canConnect;
 		Double r;
 		
@@ -107,6 +119,8 @@ public class Graph {
 					connection.add((double) j);
 					connection.add(r);
 					arcsList.add(connection);
+					arcsMatrix[i][j] = true;
+					arcsMatrix[j][i] = true;
 				}
 			}
 		}
@@ -154,5 +168,42 @@ public class Graph {
 		}
 		
 		IOCsv.exportCsv(nodesFileName, list);
+	}
+
+	public int[] calculateAccessLevel() {
+		int n = instanceList.size();
+		int access[] = new int[n];
+		int di,dj;
+		for(di = 0;di < n; di++) {
+			for(dj = 0;dj < n; dj++) {
+				int dk = dj;
+				boolean continu = true;
+				double minDistance = -1;
+				while(continu) {
+					int currentBest = -1;
+					for(int i = 0; i < n; i++) {
+						if(arcsMatrix[i][dk]) {
+							if(minDistance == -1 || minDistance > distances.get(di, i)) {
+								minDistance = distances.get(di, i);
+								currentBest = i;
+								System.out.println(currentBest);
+								System.out.println(minDistance);
+							}
+						}
+					}
+					if(currentBest != di)
+						if(currentBest == -1)
+							continu = false;
+						else
+							dk = currentBest;
+					else {
+						continu = false;
+						access[di]++;
+					}
+				}
+			}
+		}
+		
+		return access;
 	}
 }

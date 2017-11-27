@@ -31,18 +31,21 @@ public class Tester {
 		InstanceList i2= new InstanceList (IOCsv.importCsv(new File("src/iris.data.txt")), 0); //interface pour afficher le graphe , temps de progression, temps de calcul
 		ch.start();
 		Graph graph = new Graph();
-		//graph.createGraphMonocore(i2);
-		try {
-			graph.createGraphMulticore(i2);
+		graph.createGraphMonocore(i2);
+		/*try {
+			graph.createGraphMocore(i2);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (ExecutionException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
+		}*/
 		ch.stop();
 		System.out.println("Durée total calcul distance et arcs : " + ch.getTime());
+		
+		System.out.println(graph.calculateAccessLevel());
+		
 		graph.exportToCsv("src/arcsList.csv", "src/nodesList.csv");
 		
 		//new MainWindow();

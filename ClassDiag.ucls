@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="model.Graph" project="Projet4ADI" file="/Projet4ADI/src/model/Graph.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="512" y="58"/>    
+    <position height="-1" width="-1" x="476" y="61"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="model.Instance" project="Projet4ADI" file="/Projet4ADI/src/model/Instance.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="558" y="401"/>    
+    <position height="-1" width="-1" x="474" y="479"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="model.InstanceList" project="Projet4ADI" 
     file="/Projet4ADI/src/model/InstanceList.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="797" y="349"/>    
+    <position height="-1" width="-1" x="794" y="377"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="model.universals.IOCsv" project="Projet4ADI" 
     file="/Projet4ADI/src/model/universals/IOCsv.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="515" y="240"/>    
+    <position height="-1" width="-1" x="481" y="276"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="model.DistanceMatrix" project="Projet4ADI" 
     file="/Projet4ADI/src/model/DistanceMatrix.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="947" y="68"/>    
+    <position height="-1" width="-1" x="955" y="49"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="model.Chrono" project="Projet4ADI" file="/Projet4ADI/src/model/Chrono.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1009" y="332"/>    
+    <position height="-1" width="-1" x="1023" y="339"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -67,19 +67,22 @@
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="3"/>  
   </dependency>  
-  <dependency id="10">    
-    <bendpoint x="622" y="140"/>    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <association id="11">    
+  <association id="10">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="12" name="iList"/>      
-      <multiplicity id="13" minimum="0" maximum="2147483647"/>    
+      <attribute id="11" name="iList">        
+        <position height="0" width="0" x="-84" y="78"/>      
+      </attribute>      
+      <multiplicity id="12" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-84" y="78"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <dependency id="13">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
