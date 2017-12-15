@@ -170,6 +170,10 @@ public class Graph {
 		IOCsv.exportCsv(nodesFileName, list);
 	}
 
+	/**
+	 * Method calculateAccessLevel
+	 * @return a list of integer which specifies the difficulty to accessing nodes
+	 */
 	public int[] calculateAccessLevel() {
 		int n = instanceList.size();
 		int access[] = new int[n];
