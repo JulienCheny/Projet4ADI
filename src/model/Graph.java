@@ -191,6 +191,11 @@ public class Graph {
 		IOCsv.exportCsv(nodesFileName, list);
 	}
 
+	/**
+	 * Method calculateAccessLevel
+	 * @return a list of integer which specifies the difficulty to accessing nodes
+	 * @throws Exception 
+	 */
 	public int[] calculateAccessLevel() throws Exception {
 		if(areSimilarNodes())
 			throw new Exception("Similar Nodes in list");
