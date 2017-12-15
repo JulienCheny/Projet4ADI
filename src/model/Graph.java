@@ -126,6 +126,27 @@ public class Graph {
 		}
 	}
 	
+	public boolean areSimilarNodes() {
+		int n = instanceList.size();
+		for(int row = 0; row < n; row++)
+			for(int col = 0; col < n; col++)
+				if(row != col && (distances.get(row, col) == 0))
+					return true;
+					
+		return false;
+	}
+	
+	public List<Integer> getSimilarNodes() {
+		int n = instanceList.size();
+		List<Integer> idNodeList = new ArrayList<Integer>();
+		for(int row = 0; row < n; row++)
+			for(int col = 0; col < n; col++)
+				if(row != col && (distances.get(row, col) == 0))
+					if(!idNodeList.contains(row))
+						idNodeList.add(row);
+		return idNodeList;
+	}
+	
 	/**
 	 * Method exportToCsv : Export the Grpah into Csv file
 	 * @param arcsFileName
@@ -170,7 +191,9 @@ public class Graph {
 		IOCsv.exportCsv(nodesFileName, list);
 	}
 
-	public int[] calculateAccessLevel() {
+	public int[] calculateAccessLevel() throws Exception {
+		if(areSimilarNodes())
+			throw new Exception("Similar Nodes in list");
 		int n = instanceList.size();
 		int access[] = new int[n];
 		int di,dj;
@@ -186,8 +209,6 @@ public class Graph {
 							if(minDistance == -1 || minDistance > distances.get(di, i)) {
 								minDistance = distances.get(di, i);
 								currentBest = i;
-								System.out.println(currentBest);
-								System.out.println(minDistance);
 							}
 						}
 					}

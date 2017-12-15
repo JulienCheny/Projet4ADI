@@ -3,6 +3,7 @@ package launcher;
 import java.io.File;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import model.Instance;
@@ -44,7 +45,13 @@ public class Tester {
 		ch.stop();
 		System.out.println("Durée total calcul distance et arcs : " + ch.getTime());
 		
-		System.out.println(graph.calculateAccessLevel());
+		List<Integer> simNodes = graph.getSimilarNodes();
+		System.out.println(simNodes.toString());
+		/*try {
+			graph.calculateAccessLevel();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}*/
 		
 		graph.exportToCsv("src/arcsList.csv", "src/nodesList.csv");
 		
