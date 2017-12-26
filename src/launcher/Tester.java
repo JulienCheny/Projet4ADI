@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import controller.AlgoRunner;
 import model.Instance;
 import model.InstanceList;
 import model.universals.IOCsv;
@@ -16,7 +17,10 @@ import model.Graph;
 public class Tester {
 	public static void main(String[] args) {
 		
-		Chrono ch = new Chrono();
+		new MainWindow();
+		
+		
+		
 		/*
 		Double[] array = {1.1, 2.2 , 3.3};
 		Double[] array2 = {4.7, 8.3 , 10.1};
@@ -29,10 +33,6 @@ public class Tester {
 		iList.addInstance(new Instance(array2));
 		iList.addInstance(new Instance(array3))*/
 		
-		InstanceList i2= new InstanceList (IOCsv.importCsv(new File("src/iris.data.txt")), 0); //interface pour afficher le graphe , temps de progression, temps de calcul
-		ch.start();
-		Graph graph = new Graph();
-		graph.createGraphMonocore(i2);
 		/*try {
 			graph.createGraphMocore(i2);
 		} catch (InterruptedException e1) {
@@ -42,24 +42,35 @@ public class Tester {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}*/
-		ch.stop();
-		System.out.println("Durée total calcul distance et arcs : " + ch.getTime());
 		
-		List<Integer> simNodes = graph.getSimilarNodes();
-		System.out.println(simNodes.toString());
 		/*try {
 			graph.calculateAccessLevel();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}*/
 		
-		graph.exportToCsv("src/arcsList.csv", "src/nodesList.csv");
-		
-		//new MainWindow();
-		
 		//output csv (un avec classe + noeud l'autre cf IOGraph)
-		//paralleliser
-		//Mini-rapport avec diagramme de classe
+				//paralleliser
+				//Mini-rapport avec diagramme de classe
+		/*
+		Chrono ch = new Chrono();
+		InstanceList i2= new InstanceList (IOCsv.importCsv(new File("src/iris.data.txt")), 0); //interface pour afficher le graphe , temps de progression, temps de calcul
+		ch.start();
+		Graph graph = new Graph();
+		graph.createGraphMonocore(i2);
+		
+		ch.stop();
+		System.out.println("Durée total calcul distance et arcs : " + ch.getTime());
+		
+		List<Integer> simNodes = graph.getSimilarNodes();
+		System.out.println(simNodes.toString());
+		
+		
+		graph.exportToCsv("src/arcsList.csv", "src/nodesList.csv");*/
+		
+		
+		
+		
 		
 	}
 }

@@ -9,6 +9,7 @@ import java.util.ListIterator;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import controller.AlgoRunner;
 import view.panel.A_ChooseSource;
 import view.panel.B_Settings;
 import view.panel.C_ChooseDestination;
@@ -32,6 +33,8 @@ public class MainWindow extends JFrame {
 	public D_Progression progression;
 	public E_End end;
 	
+	private AlgoRunner algoRunner;
+	
 	public MainWindow() {
 		this.setTitle("Generateur de graphes");
 	    this.setLocationRelativeTo(null);
@@ -45,12 +48,13 @@ public class MainWindow extends JFrame {
 	
 	private void initDisplay() {
 		navBar = new NavigationBar(parent);
-		
-		chooseSource = new A_ChooseSource(navBar, this);
-		settings = new B_Settings(navBar, this);
-		chooseDestination = new C_ChooseDestination(navBar, this);
-		progression = new D_Progression(navBar, this);
-		end = new E_End(navBar, this);
+		AlgoRunner algoRunner = new AlgoRunner();
+		chooseSource = new A_ChooseSource(navBar, this, algoRunner);
+		settings = new B_Settings(navBar, this, algoRunner);
+		chooseDestination = new C_ChooseDestination(navBar, this, algoRunner);
+		progression = new D_Progression(navBar, this, algoRunner);
+		algoRunner.addObserver(progression);
+		end = new E_End(navBar, this, algoRunner);
 		
 		list.add(chooseSource);
 		list.add(settings);
@@ -75,8 +79,9 @@ public class MainWindow extends JFrame {
 		currentPanel.setVisible(false);
 		if(futurPanel == currentPanel)
 			futurPanel = steps.next();
+		futurPanel.setPanel();
+		currentPanel.forward();
 		currentPanel = futurPanel;
-		currentPanel.setPanel();
 		System.out.println(currentPanel.getClass().getName());
 	}
 	
@@ -98,11 +103,7 @@ public class MainWindow extends JFrame {
 		return (int) settings.indexColumnFormattedTextField.getValue();
 	}
 	
-	public String getDestinationFilePath() {
-		return chooseDestination.filePathTextField.getText();
-	}
-	
-	public String getDestinationFileName() {
-		return chooseDestination.filePathTextField.getText();
+	public void close() {
+		this.dispose();
 	}
 }

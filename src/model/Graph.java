@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Observable;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.IntStream;
 
@@ -13,7 +14,7 @@ import model.universals.IOCsv;
  * @author Francois and Julien
  *
  */
-public class Graph {
+public class Graph extends Observable {
 	private ArrayList<List<Double>> arcsList;
 	private boolean [][] arcsMatrix;
 	private DistanceMatrix distances;
@@ -88,16 +89,26 @@ public class Graph {
 		classesList = instanceList.getClasses();
 		int i,j,k,n = instanceList.size();
 		
+		setChanged();
+		notifyObservers(1);
+		
 		distances = new DistanceMatrix();
 		distances.createDistanceMatrixMonocore(instanceList);
-		
 		arcsMatrix = new boolean[n][n];
+		
+		setChanged();
+		notifyObservers(2);
 		
 		boolean canConnect;
 		Double r;
 		
 		for(i=0;i<n;i++)
 		{
+			if(i%(n/8) == 0) {
+				int regularUpdate = i/(n/8);
+				setChanged();
+				notifyObservers(regularUpdate+2);
+			}
 			for(j=i+1;j<n;j++)
 			{
 				canConnect = true;
@@ -124,6 +135,8 @@ public class Graph {
 				}
 			}
 		}
+		setChanged();
+		notifyObservers(10);
 	}
 	
 	public boolean areSimilarNodes() {

@@ -48,7 +48,8 @@ public class NavigationBar extends JPanel {
            } else if(event.getSource() == forward){
                parent.forwardPanel();
                System.out.print("You selected forward");
-           }
+           } else if(event.getSource() == close) 
+        	   parent.close();
        } // end method actionPerformed
     } // end private inner class TextFieldHandler
 }

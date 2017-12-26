@@ -7,56 +7,29 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import controller.AlgoRunner;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 
 
 @SuppressWarnings("serial")
-public class C_ChooseDestination extends StepsPanelBuilder {
-	public JTextField filePathTextField;
+public class C_ChooseDestination extends StepsPanelBuilder implements StepsPanelInterface {
 	public JTextField fileNameTextField;
 
-	public C_ChooseDestination(NavigationBar navBar, Component parent) {
-		super(navBar, parent);
+	public C_ChooseDestination(NavigationBar navBar, Component parent, AlgoRunner algoRunner) {
+		super(navBar, parent, algoRunner);
 		title.setText("Choix du fichier de destination");
 		
-		JLabel lblRepertoireDeDestination = new JLabel("Repertoire de destination :");
-		lblRepertoireDeDestination.setBounds(10, 52, 174, 14);
-		add(lblRepertoireDeDestination);
-		
-		JLabel lblNomDuDossier = new JLabel("Nom du dossier :");
-		lblNomDuDossier.setBounds(10, 120, 119, 14);
-		add(lblNomDuDossier);
-		
-		filePathTextField = new JTextField();
-		filePathTextField.setBounds(10, 77, 210, 20);
-		add(filePathTextField);
-		filePathTextField.setColumns(10);
+		JLabel lblFolderName = new JLabel("Nom du repertoire de destination :");
+		lblFolderName.setBounds(10, 58, 210, 14);
+		add(lblFolderName);
 		
 		fileNameTextField = new JTextField();
-		fileNameTextField.setBounds(10, 143, 210, 20);
+		fileNameTextField.setBounds(10, 81, 210, 20);
 		add(fileNameTextField);
 		fileNameTextField.setColumns(10);
-		
-		JButton searchFile = new JButton("...");
-		searchFile.setBounds(230, 76, 45, 23);
-		searchFile.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser chooser = new JFileChooser();
-			    FileNameExtensionFilter filter = new FileNameExtensionFilter(
-			        "csv", "txt");
-			    chooser.setFileFilter(filter);
-			    int returnVal = chooser.showOpenDialog(parent);
-			    if(returnVal == JFileChooser.APPROVE_OPTION) {
-			    	filePathTextField.setText(chooser.getSelectedFile().getAbsolutePath());
-			       System.out.println("You chose to open this file: " + filePathTextField.getText());
-			    }
-				
-			}
-		});
-		add(searchFile);
 		
 		this.setVisible(false);
 	}
@@ -65,5 +38,11 @@ public class C_ChooseDestination extends StepsPanelBuilder {
 	public void setPanel() {
 		super.setPanel();
 		navBar.setBarView(true, true);
+	}
+	
+	@Override
+	public void forward() {
+		algoRunner.setDestFileName(fileNameTextField.getText());
+		algoRunner.runAlgo();
 	}
 }
