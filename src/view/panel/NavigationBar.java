@@ -1,7 +1,6 @@
 package view.panel;
 
 import java.awt.Component;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +9,7 @@ import javax.swing.JPanel;
 
 import view.MainWindow;
 
+@SuppressWarnings("serial")
 public class NavigationBar extends JPanel {
 	public JButton forward;
 	public JButton back;

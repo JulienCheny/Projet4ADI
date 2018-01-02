@@ -18,7 +18,7 @@ public class Graph extends Observable {
 	private ArrayList<List<Double>> arcsList;
 	private boolean [][] arcsMatrix;
 	private DistanceMatrix distances;
-	private ArrayList<String> classesList;
+	private List<String> classesList;
 	private InstanceList instanceList;
 	
 	/**
@@ -166,16 +166,16 @@ public class Graph extends Observable {
 	 * @param nodesFileName
 	 * @throws IOException
 	 */
-	public void exportToCsv(String arcsFileName, String nodesFileName)
+	public void exportToCsv(String arcsFileName, String nodesFileName, String distanceMatrixFileName)
 	{
 		String[] arcsNameArray = {"RNGSource", "RNGTarget", "RNGDistance"};
-		ArrayList<String> nameList = new ArrayList<String>(Arrays.asList(arcsNameArray));
-		ArrayList<List<String>> list = new ArrayList<List<String>>();
+		List<String> nameList = new ArrayList<String>(Arrays.asList(arcsNameArray));
+		List<List<String>> list = new ArrayList<List<String>>();
 		int i, size = arcsList.size();
 		list.add(nameList);
 		for(i = 0; i < size; i++) {
 			List <Double> arc = arcsList.get(i);
-			ArrayList<String> arcStrList = new ArrayList<>();
+			List<String> arcStrList = new ArrayList<>();
 			try{
 				arcStrList.add(Integer.toString(arc.get(0).intValue()));
 			}
@@ -195,21 +195,23 @@ public class Graph extends Observable {
 		size = classesList.size();
 		list.add(nameList);
 		for(i = 0; i < size; i++) {
-			ArrayList<String> nodesStrList = new ArrayList<>();
+			List<String> nodesStrList = new ArrayList<>();
 			nodesStrList.add(Integer.toString(i));
 			nodesStrList.add(classesList.get(i));
 			list.add(nodesStrList);
 		}
 		
 		IOCsv.exportCsv(nodesFileName, list);
+		distances.exportToCsv(distanceMatrixFileName);
 	}
 
 	/**
 	 * Method calculateAccessLevel
+	 * @param accessLvlListPath 
 	 * @return a list of integer which specifies the difficulty to accessing nodes
 	 * @throws Exception 
 	 */
-	public int[] calculateAccessLevel() throws Exception {
+	public int[] calculateAccessLevel(String accessLvlListPath) throws Exception {
 		if(areSimilarNodes())
 			throw new Exception("Similar Nodes in list");
 		int n = instanceList.size();
@@ -243,6 +245,15 @@ public class Graph extends Observable {
 			}
 		}
 		
+		List<List<String>> list = new ArrayList<List<String>>();
+		
+		for(int i = 0; i < n; i++) {
+			List<String> accessLevelByNode = new ArrayList<String>();
+			accessLevelByNode.add(Integer.toString(i));
+			accessLevelByNode.add(Integer.toString(access[i]));
+			list.add(accessLevelByNode);
+		}
+		IOCsv.exportCsv(accessLvlListPath, list);
 		return access;
 	}
 }

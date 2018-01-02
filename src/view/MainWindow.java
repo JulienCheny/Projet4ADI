@@ -48,7 +48,7 @@ public class MainWindow extends JFrame {
 	
 	private void initDisplay() {
 		navBar = new NavigationBar(parent);
-		AlgoRunner algoRunner = new AlgoRunner();
+		algoRunner = new AlgoRunner();
 		chooseSource = new A_ChooseSource(navBar, this, algoRunner);
 		settings = new B_Settings(navBar, this, algoRunner);
 		chooseDestination = new C_ChooseDestination(navBar, this, algoRunner);

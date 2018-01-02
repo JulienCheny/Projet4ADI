@@ -2,12 +2,10 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.stream.IntStream;
+
+import model.universals.IOCsv;
 
 /**
  * @author Francois and Julien
@@ -107,6 +105,23 @@ public class DistanceMatrix {
 		return matrix[row] [col];
 	}
 	
+	public int getSize() {
+		return size;
+	}
+	
+	public void exportToCsv(String fileName) {
+		if(size == 0) 
+			return;
+		List<List<String>> list = new ArrayList<List<String>>();
+		for (double[] array : matrix) {
+			List<String> row = new ArrayList<>();
+	        for(double value : array) {
+	        	row.add(Double.toString(value));
+	        }
+	        list.add(row);
+	    }
+		IOCsv.exportCsv(fileName, list);
+	}
 	
 	/**
 	 * Method getI

@@ -18,10 +18,10 @@ public class IOCsv {
 	 * @return the 2D list imported from a Csv File
 	 * @throws IOException
 	 */
-	public static ArrayList<List<String>> importCsv(File file)
+	public static List<List<String>> importCsv(File file)
 	{
 		
-		ArrayList<List<String>> list=new ArrayList<List<String>>();
+		List<List<String>> list=new ArrayList<List<String>>();
 	    Scanner scanner = null;
 		try {
 			scanner = new Scanner(file);
@@ -46,9 +46,8 @@ public class IOCsv {
 	 * @param list
 	 * @throws IOException
 	 */
-	public static void exportCsv(String fileName,ArrayList<List<String>> list )
+	public static void exportCsv(String fileName,List<List<String>> list )
 	{
-		int i;
 		PrintWriter outFile = null;
 		try {
 			outFile = new PrintWriter(fileName);

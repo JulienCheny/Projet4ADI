@@ -15,9 +15,7 @@ public class InstanceList implements Callable<Double> {
 	private Instance [] iList;
 	private int attributCount;
 	private int size = 0;
-	private ArrayList<String> classesList;
-	private int indexInstance1;
-	private int indexInstance2;
+	private List<String> classesList;
 	/*public InstanceList(ArrayList<List<String>> instances)
 	{
 		attributCount = instances.get(0).size();
@@ -73,15 +71,15 @@ public class InstanceList implements Callable<Double> {
 	 * Constructor with 1 argument : Initialize InstanceList with a list of instances
 	 * @param instances
 	 */
-	public InstanceList(ArrayList<List<String>> instances, int classIndex)
+	public InstanceList(List<List<String>> instances, int classIndex)
 	{
 		int i;
 		attributCount = instances.get(0).size();
-		ArrayList<Instance> iArrayList = new ArrayList<Instance>();
+		List<Instance> iArrayList = new ArrayList<Instance>();
 		classesList = new ArrayList<String>();
 		for(List<String> inst : instances)
 		{
-			ArrayList<Double> values = new ArrayList<Double>();
+			List<Double> values = new ArrayList<Double>();
 			for (i = 0; i < inst.size(); i++) {
 				if(i == classIndex)
 					classesList.add(inst.get(i));
@@ -160,7 +158,7 @@ public class InstanceList implements Callable<Double> {
 	 * Method getClasses
 	 * @return the name of classes
 	 */
-	public ArrayList<String> getClasses() {
+	public List<String> getClasses() {
 		return classesList;
 	}
 	
@@ -168,7 +166,7 @@ public class InstanceList implements Callable<Double> {
 	 * Method setClassesList : set instances' classes
 	 * @param classesList
 	 */
-	public void setClassesList(ArrayList<String> classesList) {
+	public void setClassesList(List<String> classesList) {
 		this.classesList = classesList;
 	}
 	

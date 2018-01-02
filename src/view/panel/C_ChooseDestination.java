@@ -1,17 +1,11 @@
 package view.panel;
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controller.AlgoRunner;
-
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
 
 
 @SuppressWarnings("serial")

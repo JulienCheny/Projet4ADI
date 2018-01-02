@@ -1,17 +1,12 @@
 package view.panel;
 
 import java.awt.Component;
-import java.io.File;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JProgressBar;
 
 import controller.AlgoRunner;
-import model.Graph;
-import model.InstanceList;
-import model.universals.IOCsv;
 import javax.swing.JLabel;
 
 
@@ -63,7 +58,7 @@ public class D_Progression extends StepsPanelBuilder implements StepsPanelInterf
 		case 7:lblStat.setText("Calcul des arcs du graphe 6/8") ;break;
 		case 8:lblStat.setText("Calcul des arcs du graphe 7/8") ;break;
 		case 9:lblStat.setText("Calcul des arcs du graphe 8/8") ;break;
-		case 10:lblStat.setText("Terminé !") ;break;
+		case 10:lblStat.setText("Terminé !"); navBar.setBarView(true, true) ;break;
 		}
 	}
 }

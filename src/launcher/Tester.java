@@ -1,18 +1,6 @@
 package launcher;
 
-import java.io.File;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
-import controller.AlgoRunner;
-import model.Instance;
-import model.InstanceList;
-import model.universals.IOCsv;
 import view.MainWindow;
-import model.Chrono;
-import model.Graph;
 
 public class Tester {
 	public static void main(String[] args) {

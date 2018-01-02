@@ -12,13 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.net.URISyntaxException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -74,6 +70,7 @@ public class A_ChooseSource extends StepsPanelBuilder implements StepsPanelInter
 					    BufferedReader buffread = new BufferedReader (new FileReader(filePath));
 					    lblValidTestMessage.setForeground(Color.GREEN);
 					    lblValidTestMessage.setText("\u25B2 Chemin de fichier valide");
+					    buffread.close();
 					    A_ChooseSource.this.navBar.setBarView(false, true);
 					} catch (IOException ex) {
 						lblValidTestMessage.setForeground(Color.RED);
@@ -98,9 +95,14 @@ public class A_ChooseSource extends StepsPanelBuilder implements StepsPanelInter
 			    FileNameExtensionFilter filter = new FileNameExtensionFilter(
 			        "csv", "txt");
 			    chooser.setFileFilter(filter);
+			    try {
+					chooser.setCurrentDirectory(new File(A_ChooseSource.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath()));
+				} catch (URISyntaxException e) {
+					e.printStackTrace();
+				}
 			    int returnVal = chooser.showOpenDialog(parent);
 			    if(returnVal == JFileChooser.APPROVE_OPTION) {
-			    	filePathTextField.setText(chooser.getSelectedFile().getAbsolutePath());
+			    	filePathTextField.setText(chooser.getSelectedFile().getPath());
 			       System.out.println("You chose to open this file: " + filePathTextField.getText());
 			    }
 				

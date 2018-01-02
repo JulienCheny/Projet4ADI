@@ -2,16 +2,11 @@ package controller;
 
 import java.io.File;
 import java.util.List;
-import java.util.Observable;
 import java.util.Observer;
-
-import javax.xml.bind.ParseConversionEvent;
 
 import model.Graph;
 import model.InstanceList;
 import model.universals.IOCsv;
-import view.MainWindow;
-import view.panel.D_Progression;
 
 public class AlgoRunner {
 	private String srcPath;
@@ -52,16 +47,26 @@ public class AlgoRunner {
 		String destPath = srcFile.getParent() + "/";
 		String arcsListPath = destPath + destFileName + "/arcsList.csv";
 		String nodesListPath = destPath + destFileName + "/nodesList.csv";
+		String accessLvlListPath = destPath + destFileName + "/accessLvlList.csv";
+		String distanceMatrixPath = destPath + destFileName + "/distancesMatrix.csv";
 		
 		(new File(destPath + destFileName)).mkdirs();
 		new File(arcsListPath);
 		new File(nodesListPath);
+		new File(accessLvlListPath);
+		new File(distanceMatrixPath);
 		
 		InstanceList i2= new InstanceList (IOCsv.importCsv(srcFile), classCol); //interface pour afficher le graphe , temps de progression, temps de calcul
 		graph.createGraphMonocore(i2);
 		
 		List<Integer> simNodes = graph.getSimilarNodes();
 		System.out.println(simNodes.toString());
-		graph.exportToCsv(arcsListPath, nodesListPath);
+		
+		graph.exportToCsv(arcsListPath, nodesListPath, distanceMatrixPath);
+		try {
+			graph.calculateAccessLevel(accessLvlListPath);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

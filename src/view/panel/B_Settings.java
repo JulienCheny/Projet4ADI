@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.text.NumberFormat;
 
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 import controller.AlgoRunner;
 
