@@ -12,6 +12,12 @@ import controller.AlgoRunner;
 public class C_ChooseDestination extends StepsPanelBuilder implements StepsPanelInterface {
 	public JTextField fileNameTextField;
 
+	/**
+	 * Constructor C_ChooseDestination : set the window for choosing destination
+	 * @param navBar
+	 * @param parent
+	 * @param algoRunner
+	 */
 	public C_ChooseDestination(NavigationBar navBar, Component parent, AlgoRunner algoRunner) {
 		super(navBar, parent, algoRunner);
 		title.setText("Choix du fichier de destination");

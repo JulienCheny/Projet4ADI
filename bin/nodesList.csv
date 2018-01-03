@@ -47,8 +47,8 @@ IdNode;Class
 45;Iris-setosa
 46;Iris-setosa
 47;Iris-setosa
-48;Iris-setosa
-49;Iris-setosa
+48;Iris-versicolor
+49;Iris-versicolor
 50;Iris-versicolor
 51;Iris-versicolor
 52;Iris-versicolor
@@ -97,8 +97,8 @@ IdNode;Class
 95;Iris-versicolor
 96;Iris-versicolor
 97;Iris-versicolor
-98;Iris-versicolor
-99;Iris-versicolor
+98;Iris-virginica
+99;Iris-virginica
 100;Iris-virginica
 101;Iris-virginica
 102;Iris-virginica
@@ -146,6 +146,3 @@ IdNode;Class
 144;Iris-virginica
 145;Iris-virginica
 146;Iris-virginica
-147;Iris-virginica
-148;Iris-virginica
-149;Iris-virginica

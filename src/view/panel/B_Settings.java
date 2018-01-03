@@ -14,6 +14,13 @@ public class B_Settings extends StepsPanelBuilder implements StepsPanelInterface
 
 	public JFormattedTextField indexColumnFormattedTextField;
 	
+
+	/**
+	 * Constructor B_Settings : set the window for settings
+	 * @param navBar
+	 * @param parent
+	 * @param algoRunner
+	 */
 	public B_Settings(NavigationBar navBar, Component parent, AlgoRunner algoRunner) {
 		super(navBar, parent, algoRunner);
 		title.setText("Options du constructeur");

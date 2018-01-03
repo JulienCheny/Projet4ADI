@@ -26,6 +26,12 @@ import java.awt.Font;
 public class A_ChooseSource extends StepsPanelBuilder implements StepsPanelInterface {
 	public JTextField filePathTextField;
 
+	/**
+	 * Constructor A_ChooseSource : set the window for choosing source
+	 * @param navBar
+	 * @param parent
+	 * @param algoRunner
+	 */
 	public A_ChooseSource(NavigationBar navBar, Component parent, AlgoRunner algoRunner) {
 		super(navBar, parent, algoRunner);
 		title.setText("Choix du fichier source");
@@ -63,6 +69,10 @@ public class A_ChooseSource extends StepsPanelBuilder implements StepsPanelInter
 				
 			}
 
+			/**
+			 * Method warn: indicate if the file is correct
+			 * 
+			 */
 			private void warn() {
 				String filePath = filePathTextField.getText();
 				if(filePath != "") {

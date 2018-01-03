@@ -16,29 +16,7 @@ public class InstanceList implements Callable<Double> {
 	private int attributCount;
 	private int size = 0;
 	private List<String> classesList;
-	/*public InstanceList(ArrayList<List<String>> instances)
-	{
-		attributCount = instances.get(0).size();
-		for(List<String> inst : instances)
-		{
-			ArrayList<Double> values = new ArrayList<Double>();
-			for (String str : inst) {
-				values.add(Double.parseDouble(str));
-			}
-			Instance instance = new Instance(values);
-			iList.add(instance);
-		}
-	}*/
-	/*public InstanceList(InstanceList i1, int indexInst1, int indexInst2)
-	{
-		iList=i1.getiList();
-		attributCount=i1.getAttributCount();
-		size=i1.getSize();
-		classesList=i1.getClassesList();
-		indexInstance1=indexInst1;
-		indexInstance1=indexInst2;
-		
-	}*/
+	
 	/**
 	 * Method getiList
 	 * @return the list of instances
@@ -93,13 +71,6 @@ public class InstanceList implements Callable<Double> {
 		iList = iArrayList.toArray(new Instance[iArrayList.size()]);
 	}
 	
-	/*public InstanceList(int attributCount) {
-	this.attributCount = attributCount;
-	}
-	/**
-	 * Constructor with 1 argument : Initialize InstanceList with a empty list
-	 * @param attributCount
-	 */
 	
 	/**
 	 * Method addInstance  : add an instance on the list 

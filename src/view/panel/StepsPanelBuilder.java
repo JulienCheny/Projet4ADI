@@ -15,6 +15,12 @@ public class StepsPanelBuilder extends JPanel implements StepsPanelInterface {
 	protected NavigationBar navBar;
 	protected JLabel title;
 	protected AlgoRunner algoRunner;
+	/**
+	 * Constructor StepsPanelBuilder : set the panel builder
+	 * @param navBar
+	 * @param parent
+	 * @param algoRunner
+	 */
 	public StepsPanelBuilder(NavigationBar navBar, Component parent,AlgoRunner algoRunner) {
 		this.parent = parent;
 		this.navBar = navBar;

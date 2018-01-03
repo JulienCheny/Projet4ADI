@@ -105,10 +105,19 @@ public class DistanceMatrix {
 		return matrix[row] [col];
 	}
 	
+	/**
+	 * Method getSize
+	 * @return Size of DistanceMatrix
+	 */
 	public int getSize() {
 		return size;
 	}
 	
+	/**
+	 * Method exportToCsv : export DistanceMatrix in Csv file
+	 * @param fileName
+	 * 
+	 */
 	public void exportToCsv(String fileName) {
 		if(size == 0) 
 			return;
@@ -123,36 +132,4 @@ public class DistanceMatrix {
 		IOCsv.exportCsv(fileName, list);
 	}
 	
-	/**
-	 * Method getI
-	 * @return i 
-	 */
-	/*public static int getI() {
-		return i;
-	}*/
-
-	/**
-	 * 
-	 * Method setI : set i value
-	 * @param i
-	 */
-	/*public static void setI(int i) {
-		DistanceMatrix.i = i;
-	}*/
-
-	/**
-	 * Method getJ
-	 * @return j 
-	 */
-	/*public static int getJ() {
-		return j;
-	}*/
-
-	/**
-	 * Method setJ : set j value
-	 * @param j
-	 */
-	/*public static void setJ(int j) {
-		DistanceMatrix.j = j;
-	}*/
 }

@@ -16,6 +16,10 @@ public class NavigationBar extends JPanel {
 	public JButton close;
 	private MainWindow parent;
 	
+	/**
+	 * Constructor NavigationBar : set the navigation bar of windows
+	 * @param parent
+	 */
 	public NavigationBar(Component parent){
         ButtonPressHandler handler = new ButtonPressHandler();
         this.parent = (MainWindow) parent;
@@ -34,6 +38,11 @@ public class NavigationBar extends JPanel {
         this.setVisible(true);
     }
 	
+	/**
+	 * Method setBarView : set the view of the navigation bar
+	 * @param backEnable
+	 * @param forwardEnable
+	 */
 	public void setBarView(boolean backEnable, boolean forwardEnable) {
 		forward.setEnabled(forwardEnable);
 		back.setEnabled(backEnable);

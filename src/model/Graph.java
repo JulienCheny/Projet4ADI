@@ -14,6 +14,10 @@ import model.universals.IOCsv;
  * @author Francois and Julien
  *
  */
+/**
+ * @author François
+ *
+ */
 public class Graph extends Observable {
 	private ArrayList<List<Double>> arcsList;
 	private boolean [][] arcsMatrix;
@@ -139,6 +143,11 @@ public class Graph extends Observable {
 		notifyObservers(10);
 	}
 	
+	
+	/**
+	 * Method areSimilarNodes : verify if 2 nodes are similar
+	 * @return
+	 */
 	public boolean areSimilarNodes() {
 		int n = instanceList.size();
 		for(int row = 0; row < n; row++)
@@ -149,6 +158,10 @@ public class Graph extends Observable {
 		return false;
 	}
 	
+	/**
+	 * Method getSimilarNodes
+	 * @return the  list of similar nodes
+	 */
 	public List<Integer> getSimilarNodes() {
 		int n = instanceList.size();
 		List<Integer> idNodeList = new ArrayList<Integer>();
@@ -161,9 +174,10 @@ public class Graph extends Observable {
 	}
 	
 	/**
-	 * Method exportToCsv : Export the Grpah into Csv file
+	 * Method exportToCsv : Export the Graph into Csv file
 	 * @param arcsFileName
 	 * @param nodesFileName
+	 * @param distanceMatrixFileName
 	 * @throws IOException
 	 */
 	public void exportToCsv(String arcsFileName, String nodesFileName, String distanceMatrixFileName)

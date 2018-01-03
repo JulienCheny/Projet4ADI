@@ -16,6 +16,12 @@ public class D_Progression extends StepsPanelBuilder implements StepsPanelInterf
 	private JProgressBar progressBar;
 	private JLabel lblStat = new JLabel("");
 	
+	/**
+	 * Constructor D_Progression : set the window of progression
+	 * @param navBar
+	 * @param parent
+	 * @param algoRunner
+	 */
 	public D_Progression(NavigationBar navBar, Component parent, AlgoRunner algoRunner) {
 		super(navBar, parent, algoRunner);
 		title.setText("Construction du graphe");

@@ -14,34 +14,65 @@ public class AlgoRunner {
 	private int classCol;
 	private Graph graph = new Graph();
 	
+	/**
+	 * Method getSrcPath
+	 * @return the source path
+	 */
 	public String getSrcPath() {
 		return srcPath;
 	}
 
+	/**
+	 * method setSrcPath : set the source path
+	 * @param srcPath
+	 */
 	public void setSrcPath(String srcPath) {
 		this.srcPath = srcPath;
 	}
 
+	/**
+	 * Method getDestFileName
+	 * @return the destination file name
+	 */
 	public String getDestFileName() {
 		return destFileName;
 	}
 
+	/**
+	 * Method setDestFileName : set the destination file name
+	 * @param fileName
+	 */
 	public void setDestFileName(String fileName) {
 		this.destFileName = fileName;
 	}
 
+	/**
+	 * Method getClassCol
+	 * @return the column of the class name of instances
+	 */
 	public int getClassCol() {
 		return classCol;
 	}
 
+	/**
+	 * Method set ClassCol : set the column of the class name of instances
+	 * @param classCol
+	 */
 	public void setClassCol(int classCol) {
 		this.classCol = classCol;
 	}
 	
+	/**
+	 * Method addObserver : add an observer on the graph construction to see if it works
+	 * @param obs
+	 */
 	public void addObserver(Observer obs) {
 		graph.addObserver(obs);
 	}
 
+	/**
+	 * Method runAlgo : run the algorithm
+	 */
 	public void runAlgo() {
 		File srcFile = new File(srcPath);
 		String destPath = srcFile.getParent() + "/";

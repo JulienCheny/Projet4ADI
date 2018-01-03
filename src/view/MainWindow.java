@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,10 @@ public class MainWindow extends JFrame {
 	
 	private AlgoRunner algoRunner;
 	
+	/**
+	 * Constructor MainWindow : set the main window of the application
+	 * 
+	 */
 	public MainWindow() {
 		this.setTitle("Generateur de graphes");
 	    this.setLocationRelativeTo(null);
@@ -46,6 +51,10 @@ public class MainWindow extends JFrame {
 		this.setVisible(true);
 	}
 	
+	/**
+	 * Method initDisplay : initialize the display
+	 * 
+	 */
 	private void initDisplay() {
 		navBar = new NavigationBar(parent);
 		algoRunner = new AlgoRunner();
@@ -74,6 +83,10 @@ public class MainWindow extends JFrame {
 		progression.setProgressBar(32);
 	}
 	
+	/**
+	 * Method forwardPanel : initialize the forward Panel
+	 * 
+	 */
 	public void forwardPanel() {
 		StepsPanelBuilder futurPanel = steps.next();
 		currentPanel.setVisible(false);
@@ -85,6 +98,10 @@ public class MainWindow extends JFrame {
 		System.out.println(currentPanel.getClass().getName());
 	}
 	
+	/**
+	 * Method backPanel : initialize the back panel
+	 * 
+	 */
 	public void backPanel() {
 		StepsPanelBuilder futurPanel = steps.previous();
 		currentPanel.setVisible(false);
@@ -95,14 +112,25 @@ public class MainWindow extends JFrame {
 		System.out.println(currentPanel.getClass().getName());
 	}
 	
+	/**
+	 * Method getSourceFilePath
+	 * @return the source file path selected on the "A_ChooseSource" window
+	 */
 	public String getSourceFilePath() {
 		return chooseSource.filePathTextField.getText();
 	}
 	
+	/**
+	 * Method getColumnNumber
+	 * @return the value of the index column on the "B_Settings" window
+	 */
 	public int getColumnNumber() {
 		return (int) settings.indexColumnFormattedTextField.getValue();
 	}
 	
+	/**
+	 * Method close : close the main window
+	 */
 	public void close() {
 		this.dispose();
 	}
