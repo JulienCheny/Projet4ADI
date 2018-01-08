@@ -120,7 +120,7 @@ public class A_ChooseSource extends StepsPanelBuilder implements StepsPanelInter
 		});
 		add(searchFile);
 		
-		JLabel lblInfos = new JLabel("Entrez un fichier texte.");
+		JLabel lblInfos = new JLabel("Entrez un fichier texte (csv ou txt).");
 		lblInfos.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblInfos.setBounds(20, 129, 270, 14);
 		add(lblInfos);
