@@ -24,7 +24,6 @@ public class NavigationBar extends JPanel {
         ButtonPressHandler handler = new ButtonPressHandler();
         this.parent = (MainWindow) parent;
         
-        //this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
         back = new JButton("Precedent");
         back.addActionListener(handler);
         close = new JButton("Annuler");
@@ -59,6 +58,6 @@ public class NavigationBar extends JPanel {
                System.out.print("You selected forward");
            } else if(event.getSource() == close) 
         	   parent.close();
-       } // end method actionPerformed
-    } // end private inner class TextFieldHandler
+       }
+    }
 }

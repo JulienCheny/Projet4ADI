@@ -49,32 +49,6 @@ public class DistanceMatrix {
 		size = n;
 		matrix = new double[n][n];
 		
-		/*List<Callable<Double>> tasks=new ArrayList<>();
-		List<Future<Double>>results=new ArrayList<>();
-		
-		ExecutorService executor;
-		int nbProcs = Runtime.getRuntime().availableProcessors();
-	    executor = Executors.newFixedThreadPool(nbProcs);
-	    for(i=0;i<n;i++)
-	    {
-	    	for(j=0;j<n;j++)
-		    {
-		    	for(int t=0;t<nbProcs;t++)
-				{
-					tasks.add(instanceList);
-				}
-		    	results =executor.invokeAll(tasks);
-		    	for(Future<Double> result: results)
-				{
-		    		set(i, j, result.get());
-					set(j, i, result.get());
-				}
-		    	results.clear();
-				tasks.clear();
-				
-		    }
-	    }
-		executor.shutdown();*/
 		IntStream.range(0, n).parallel().forEach(i->{
 			int j;
 			for(j=i+1;j<n;j++)

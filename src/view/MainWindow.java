@@ -74,7 +74,6 @@ public class MainWindow extends JFrame {
 		steps = list.listIterator();
 		currentPanel = steps.next();
 		for (JPanel panel : list) {
-			//panel.setBackground(Color.LIGHT_GRAY);
 			getContentPane().add(panel, BorderLayout.CENTER);
 		}
 		getContentPane().add(navBar,BorderLayout.SOUTH);

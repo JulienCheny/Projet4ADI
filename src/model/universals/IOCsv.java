@@ -61,7 +61,6 @@ public class IOCsv {
 				if(attributsList.get(attributsList.size()-1) != attribut)
 					line +=";";
 			}
-			//System.out.println(line);
 			outFile.println(line);
 		}
 		outFile.close();
