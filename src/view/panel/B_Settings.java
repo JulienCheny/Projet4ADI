@@ -8,11 +8,14 @@ import javax.swing.JLabel;
 import controller.AlgoRunner;
 
 import javax.swing.JFormattedTextField;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
 public class B_Settings extends StepsPanelBuilder implements StepsPanelInterface {
 
 	public JFormattedTextField indexColumnFormattedTextField;
+	private JTextField separatorTextField;
 	
 
 	/**
@@ -26,13 +29,25 @@ public class B_Settings extends StepsPanelBuilder implements StepsPanelInterface
 		title.setText("Options du constructeur");
 		
 		JLabel lblIndexColumn = new JLabel("Index de la colonne de la classe :");
+		lblIndexColumn.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblIndexColumn.setBounds(10, 88, 193, 14);
 		add(lblIndexColumn);
 		
 		indexColumnFormattedTextField = new JFormattedTextField( NumberFormat.getNumberInstance());
 		indexColumnFormattedTextField.setBounds(210, 85, 34, 20);
-		indexColumnFormattedTextField.setText("0");
+		indexColumnFormattedTextField.setText("1");
 		add(indexColumnFormattedTextField);
+		
+		JLabel lblAttributsSeparator = new JLabel("S\u00E9parateur des attributs :");
+		lblAttributsSeparator.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblAttributsSeparator.setBounds(10, 113, 193, 14);
+		add(lblAttributsSeparator);
+		
+		separatorTextField = new JTextField();
+		separatorTextField.setText(",");
+		separatorTextField.setBounds(210, 110, 34, 20);
+		add(separatorTextField);
+		separatorTextField.setColumns(10);
 		this.setVisible(false);
 	}
 
@@ -45,5 +60,6 @@ public class B_Settings extends StepsPanelBuilder implements StepsPanelInterface
 	@Override
 	public void forward() {
 		algoRunner.setClassCol(Integer.parseInt(indexColumnFormattedTextField.getText()));
+		algoRunner.setSeparator(separatorTextField.getText());
 	}
 }

@@ -12,6 +12,7 @@ public class AlgoRunner {
 	private String srcPath;
 	private String destFileName;
 	private int classCol;
+	private String separator;
 	private Graph graph = new Graph();
 	
 	/**
@@ -63,6 +64,22 @@ public class AlgoRunner {
 	}
 	
 	/**
+	 * Method getSeparator
+	 * @return the separator of the attributs in the file
+	 */
+	public String getSeparator() {
+		return separator;
+	}
+
+	/**
+	 * Method set Separator : set separator of the attributs in the file
+	 * @param separator
+	 */
+	public void setSeparator(String separator) {
+		this.separator = separator;
+	}
+
+	/**
 	 * Method addObserver : add an observer on the graph construction to see if it works
 	 * @param obs
 	 */
@@ -87,7 +104,7 @@ public class AlgoRunner {
 		new File(accessLvlListPath);
 		new File(distanceMatrixPath);
 		
-		InstanceList i2= new InstanceList (IOCsv.importCsv(srcFile), classCol); //interface pour afficher le graphe , temps de progression, temps de calcul
+		InstanceList i2= new InstanceList (IOCsv.importCsv(srcFile, separator), classCol-1); //interface pour afficher le graphe , temps de progression, temps de calcul
 		graph.createGraphMonocore(i2);
 		
 		List<Integer> simNodes = graph.getSimilarNodes();

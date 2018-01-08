@@ -18,7 +18,7 @@ public class IOCsv {
 	 * @return the 2D list imported from a Csv File
 	 * @throws IOException
 	 */
-	public static List<List<String>> importCsv(File file)
+	public static List<List<String>> importCsv(File file, String separator)
 	{
 		
 		List<List<String>> list=new ArrayList<List<String>>();
@@ -32,7 +32,7 @@ public class IOCsv {
 	    
 	    while(scanner.hasNext()){
 	    	List <String> attributs;
-	    	attributs = Arrays.asList(scanner.nextLine().split(","));
+	    	attributs = Arrays.asList(scanner.nextLine().split(separator));
 	    	list.add(attributs);
 	    }
 	    scanner.close();
