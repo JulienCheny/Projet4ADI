@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.14" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="model.Graph" project="Projet4ADI" file="/Projet4ADI/src/model/Graph.java" 
+  <class id="1" language="java" name="view.panel.B_Settings" project="Projet4ADI" 
+    file="/Projet4ADI/src/view/panel/B_Settings.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1304" y="-82"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="view.panel.NavigationBar" project="Projet4ADI" 
+    file="/Projet4ADI/src/view/panel/NavigationBar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1705" y="311"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="view.panel.D_Progression" project="Projet4ADI" 
+    file="/Projet4ADI/src/view/panel/D_Progression.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="888" y="203"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="view.panel.C_ChooseDestination" project="Projet4ADI" 
+    file="/Projet4ADI/src/view/panel/C_ChooseDestination.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="925" y="-98"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="view.panel.A_ChooseSource" project="Projet4ADI" 
+    file="/Projet4ADI/src/view/panel/A_ChooseSource.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1761" y="87"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="view.panel.E_End" project="Projet4ADI" 
+    file="/Projet4ADI/src/view/panel/E_End.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1625" y="-79"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="view.MainWindow" project="Projet4ADI" file="/Projet4ADI/src/view/MainWindow.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="476" y="61"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="model.Instance" project="Projet4ADI" file="/Projet4ADI/src/model/Instance.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="535" y="477"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="model.InstanceList" project="Projet4ADI" 
-    file="/Projet4ADI/src/model/InstanceList.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="794" y="377"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="model.universals.IOCsv" project="Projet4ADI" 
-    file="/Projet4ADI/src/model/universals/IOCsv.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="479" y="289"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="model.DistanceMatrix" project="Projet4ADI" 
-    file="/Projet4ADI/src/model/DistanceMatrix.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="790" y="53"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="model.Chrono" project="Projet4ADI" file="/Projet4ADI/src/model/Chrono.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="238" y="64"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="controller.AlgoRunner" project="Projet4ADI" 
-    file="/Projet4ADI/src/controller/AlgoRunner.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="244" y="367"/>    
+    <position height="-1" width="-1" x="1303" y="298"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -65,73 +65,80 @@
     </display>  
   </class>  
   <association id="8">    
-    <bendpoint x="586" y="181"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="9" name="instanceList">        
-        <position height="18" width="66" x="628" y="209"/>      
-      </attribute>      
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="9" name="progression"/>      
       <multiplicity id="10" minimum="0" maximum="1">        
-        <position height="16" width="23" x="641" y="257"/>      
+        <position height="16" width="23" x="1043" y="247"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="11">    
-    <bendpoint x="589" y="53"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="12" name="distances"/>      
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="12" name="end">        
+        <position height="18" width="28" x="1527" y="-9"/>      
+      </attribute>      
       <multiplicity id="13" minimum="0" maximum="1">        
-        <position height="16" width="23" x="623" y="69"/>      
+        <position height="16" width="23" x="1561" y="5"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="14">    
+    <bendpoint x="1518" y="393"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="15" name="parent">        
+        <position height="18" width="39" x="1426" y="340"/>      
+      </attribute>      
+      <multiplicity id="16" minimum="0" maximum="1">        
+        <position height="16" width="23" x="1422" y="363"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="17">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="18" name="chooseSource">        
+        <position height="18" width="81" x="1514" y="152"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="1">        
+        <position height="16" width="23" x="1584" y="172"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="14">    
-    <bendpoint x="328" y="294"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <dependency id="15">    
-    <bendpoint x="693" y="368"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
-  <dependency id="16">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <association id="17">    
-    <bendpoint x="327" y="213"/>    
+  <association id="20">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="18" name="graph">        
-        <position height="18" width="36" x="311" y="180"/>      
-      </attribute>      
-      <multiplicity id="19" minimum="0" maximum="1">        
-        <position height="16" width="23" x="339" y="198"/>      
-      </multiplicity>    
+      <attribute id="21" name="settings"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="20">    
-    <bendpoint x="698" y="478"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="21" name="iList">        
-        <position height="0" width="0" x="-23" y="76"/>      
-      </attribute>      
-      <multiplicity id="22" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-23" y="76"/>      
-      </multiplicity>    
+  <association id="23">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="24" name="navBar"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="23">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="3"/>  
-  </dependency>  
+  <association id="26">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="27" name="chooseDestination">        
+        <position height="18" width="99" x="915" y="-8"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="16" width="23" x="1012" y="-25"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
